@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Account List</title>
+</head>
+<body>
+    <h1>Accounts</h1>
+    <ul>
+        {% for account in accounts %}
+            <li>
+                <a href="{% url 'account_detail' account.pk %}">{{ account.name }}</a> - {{ account.balance }}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'transfer_funds' %}">Transfer Funds</a>
+    <a href="{% url 'upload_accounts' %}">Upload
