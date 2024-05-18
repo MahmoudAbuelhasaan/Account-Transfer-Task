@@ -33,6 +33,7 @@ def upload_accounts(request):
         if form.is_valid():
             csv_file = request.FILES['file']
             reader = csv.reader(csv_file.read().decode('utf-8').splitlines())
+            next(reader)
             for row in reader:
                 Account.objects.create(name=row[0], balance=row[1])
             return redirect('account_list')
