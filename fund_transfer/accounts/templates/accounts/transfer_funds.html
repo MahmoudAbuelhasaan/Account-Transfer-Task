@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transfer Funds</title>
+</head>
+<body>
+    <h1>Transfer Funds</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Transfer</button>
+    </form>
+    <a href="{% url 'account_list' %}">Back to Account List</a>
+</body>
+</html>

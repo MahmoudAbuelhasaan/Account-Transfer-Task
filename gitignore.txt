@@ -25,6 +25,10 @@ dist/
 .env.development
 .env.test
 .env.production
+env
+env/
+venv
+venv/
 
 # Ignore system files
 .DS_Store
