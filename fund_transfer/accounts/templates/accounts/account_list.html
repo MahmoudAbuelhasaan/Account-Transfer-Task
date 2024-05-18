@@ -47,18 +47,58 @@
         .actions a:hover {
             background-color: #0056b3;
         }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        .pagination li {
+            margin: 0 2px;
+        }
+        .pagination a, .pagination .current {
+            display: block;
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+        .pagination a:hover {
+            background-color: #0056b3;
+        }
+        .pagination .current {
+            background-color: #333;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Accounts</h1>
         <ul>
-            {% for account in accounts %}
+            {% for account in page_obj %}
                 <li>
                     <a href="{% url 'account_detail' account.pk %}">{{ account.name }}</a> - {{ account.balance }}
                 </li>
             {% endfor %}
         </ul>
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <li><a href="?page=1">&laquo; First</a></li>
+                <li><a href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+            </span>
+
+            {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}">Next</a></li>
+                <li><a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a></li>
+            {% endif %}
+        </div>
         <div class="actions">
             <a href="{% url 'transfer_funds' %}">Transfer Funds</a>
             <a href="{% url 'upload_accounts' %}">Upload Accounts</a>

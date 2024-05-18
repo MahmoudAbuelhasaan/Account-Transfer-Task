@@ -3,10 +3,19 @@ from django.http import HttpResponse
 from .models import Account
 from .forms import TransferForm, UploadFileForm
 import csv
+from django.core.paginator import Paginator
+from django.shortcuts import render
+
 
 def account_list(request):
-    accounts = Account.objects.all()
-    return render(request, 'accounts/account_list.html', {'accounts': accounts})
+    account_list = Account.objects.all()
+    paginator = Paginator(account_list, 10)  
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'accounts/account_list.html', {'page_obj': page_obj})
+
 
 def account_detail(request, pk):
     account = get_object_or_404(Account, pk=pk)
