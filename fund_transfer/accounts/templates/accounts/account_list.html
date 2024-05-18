@@ -2,15 +2,67 @@
 <html>
 <head>
     <title>Account List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 70%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px 0;
+            font-size: 1.2em;
+        }
+        li a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        li a:hover {
+            text-decoration: underline;
+        }
+        .actions a {
+            display: inline-block;
+            margin: 20px 10px 0 0;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .actions a:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h1>Accounts</h1>
-    <ul>
-        {% for account in accounts %}
-            <li>
-                <a href="{% url 'account_detail' account.pk %}">{{ account.name }}</a> - {{ account.balance }}
-            </li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'transfer_funds' %}">Transfer Funds</a>
-    <a href="{% url 'upload_accounts' %}">Upload
+    <div class="container">
+        <h1>Accounts</h1>
+        <ul>
+            {% for account in accounts %}
+                <li>
+                    <a href="{% url 'account_detail' account.pk %}">{{ account.name }}</a> - {{ account.balance }}
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="actions">
+            <a href="{% url 'transfer_funds' %}">Transfer Funds</a>
+            <a href="{% url 'upload_accounts' %}">Upload Accounts</a>
+        </div>
+    </div>
+</body>
+</html>
