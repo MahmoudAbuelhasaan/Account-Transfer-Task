@@ -1,45 +1,77 @@
-# Ignore Python virtual environment files
-venv/
-__pycache__/
-
-# Ignore compiled Python files
-*.pyc
-
-# Ignore Django-specific files and directories
-*.log
-db.sqlite3
-media/
-static/
-
-# Ignore Node.js and npm specific files and directories
-node_modules/
-package-lock.json
-
-# Ignore compiled React code
-build/
-dist/
-
-# Ignore environment configuration files
-.env
-.env.local
-.env.development
-.env.test
-.env.production
-env
+# Virtual environment
 env/
-venv
+ENV/
+env.bak/
 venv/
+.venv/
 
-# Ignore system files
-.DS_Store
-Thumbs.db
+# Django specific
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+db.sqlite3-journal
 
-# Ignore editor/IDE-specific files
-.idea/
+# Django migrations
+*/migrations/*
+!*/migrations/__init__.py
+
+# Media files
+/media
+/media/*
+
+# Static files
+/static
+/static/*
+
+# Local settings
+/local_settings.py
+
+# IDEs and editors
 .vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
 
-# Ignore local settings files
-*.local_settings
+# macOS
+.DS_Store
 
-# Ignore backup files
+# Windows
+Thumbs.db
+ehthumbs.db
+*.stackdump
+
+# Linux
 *~
+
+# Test and coverage reports
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+.tox/
+dist/
+build/
+site/
+
+# Pipenv
+Pipfile.lock
+
+# pyenv
+.python-version
+
+# Celery beat schedule file
+celerybeat-schedule
+
+# Sphinx documentation
+docs/_build/
+docsrc/_build/
+
+# Environments
+.env
+.env.*
